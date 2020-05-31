@@ -8,7 +8,7 @@ namespace PartialSums
 {
     //http://algo.pw/algo/87/
 
-    public class IntegerFenwickSum : IIntegerPartialSumDataStructure, IBenchmarkablePartialSumDataStructure, ITestablePartialSumDataStructure
+    public class IntegerFenwickSum : IBenchmarkablePartialSumDataStructure, ITestablePartialSumDataStructure
     {
         public int Size { get => _items.Length; }
         
