@@ -12,10 +12,12 @@ namespace PartialSums.Data_Structures
 
         private readonly int[] _items;
 
+        private readonly int numberOfLeaves;
+
         public IntegerCompleteBinaryTree(int n)
         {
             Size = n;
-            int numberOfLeaves = RoundUpToPowerOf2(n);
+            numberOfLeaves = RoundUpToPowerOf2(n);
             _items = new int[2 * numberOfLeaves];
         }
 
@@ -49,7 +51,8 @@ namespace PartialSums.Data_Structures
         public int Sum(int index)
         {
             int RightChildrenSum = 0;
-            for (int binaryTreeIndex = index + Size; binaryTreeIndex > 1; binaryTreeIndex /= 2) //leaf to root path, stop before root
+            int internalNodes = numberOfLeaves - 1;
+            for (int binaryTreeIndex = index + internalNodes; binaryTreeIndex > 1; binaryTreeIndex /= 2) //leaf to root path, stop before root
             {
                 if (binaryTreeIndex % 2 == 0) //current node is left child
                     RightChildrenSum += _items[binaryTreeIndex + 1]; //add value of sibling
