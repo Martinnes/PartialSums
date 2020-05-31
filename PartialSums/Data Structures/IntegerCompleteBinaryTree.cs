@@ -14,6 +14,8 @@ namespace PartialSums.Data_Structures
 
         private readonly int numberOfLeaves;
 
+        private int internalNodes => numberOfLeaves - 1;
+
         public IntegerCompleteBinaryTree(int n)
         {
             Size = n;
@@ -36,8 +38,8 @@ namespace PartialSums.Data_Structures
          * */
         public void Increase(int i, int delta)
         {
-            i += Size;
-            for (; i > 0; i /= 2) //leaf node and all ancestors in complete binary tree
+            i += internalNodes;
+            for (; i > 0; i /= 2) //leaf to root path,
             {
                 _items[i] += delta; 
             }
@@ -51,7 +53,6 @@ namespace PartialSums.Data_Structures
         public int Sum(int index)
         {
             int RightChildrenSum = 0;
-            int internalNodes = numberOfLeaves - 1;
             for (int binaryTreeIndex = index + internalNodes; binaryTreeIndex > 1; binaryTreeIndex /= 2) //leaf to root path, stop before root
             {
                 if (binaryTreeIndex % 2 == 0) //current node is left child
