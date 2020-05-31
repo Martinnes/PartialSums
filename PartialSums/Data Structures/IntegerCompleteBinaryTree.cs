@@ -39,7 +39,7 @@ namespace PartialSums.Data_Structures
         public void Increase(int i, int delta)
         {
             i += internalNodes;
-            for (; i > 0; i /= 2) //leaf to root path,
+            for (; i > 0; i = i >> 1) //leaf to root path,
             {
                 _items[i] += delta; 
             }
@@ -53,7 +53,7 @@ namespace PartialSums.Data_Structures
         public int Sum(int index)
         {
             int RightChildrenSum = 0;
-            for (int binaryTreeIndex = index + internalNodes; binaryTreeIndex > 1; binaryTreeIndex /= 2) //leaf to root path, stop before root
+            for (int binaryTreeIndex = index + internalNodes; binaryTreeIndex > 1; binaryTreeIndex = binaryTreeIndex >> 1) //leaf to root path, stop before root
             {
                 if (binaryTreeIndex % 2 == 0) //current node is left child
                     RightChildrenSum += _items[binaryTreeIndex + 1]; //add value of sibling
