@@ -79,6 +79,14 @@ namespace PartialSums.Data_Structures
             return x + 1;
         }
 
-        
+        void ITestablePartialSumDataStructure.Increase(int index, byte delta)
+        {
+            Increase(index, Convert.ToInt32(delta));
+        }
+
+        byte ITestablePartialSumDataStructure.Sum(int index)
+        {
+            return Convert.ToByte(Sum(index));
+        }
     }
 }

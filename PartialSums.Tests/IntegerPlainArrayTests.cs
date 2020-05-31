@@ -5,11 +5,11 @@ using System.Text;
 
 namespace PartialSums.Tests
 {
-    public class BinaryTreeTests : AbstractPartialSumTests
+    public class IntegerPlainArrayTests : AbstractPartialSumTests
     {
         protected override ITestablePartialSumDataStructure GetDataStructure(int size)
         {
-            return new IntegerCompleteBinaryTree(size);
+            return new IntegerPlainArray(size);        
         }
     }
 }

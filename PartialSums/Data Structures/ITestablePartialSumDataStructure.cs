@@ -6,8 +6,8 @@ namespace PartialSums.Data_Structures
 {
     public interface ITestablePartialSumDataStructure
     {
-        void Increase(int index, int delta);
+        void Increase(int index, byte delta);
 
-        int Sum(int index);
+        byte Sum(int index);
     }
 }

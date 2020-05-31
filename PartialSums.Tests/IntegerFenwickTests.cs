@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PartialSums.Tests
 {
-    public class FenwickTests : AbstractPartialSumTests
+    public class IntegerFenwickTests : AbstractPartialSumTests
     {
         protected override ITestablePartialSumDataStructure GetDataStructure(int size)
         {

@@ -12,7 +12,7 @@ namespace PartialSums.Tests
         [InlineData(5,10,20)]
         [InlineData(13, 33, 10)]
         [InlineData(42, 43, 3)]
-        public void Increase_SpecificIndexWithDelta_IndexValueShouldBeOldPlusDelta(int index, int dataStructureSize, int delta)
+        public void Increase_SpecificIndexWithDelta_IndexValueShouldBeOldPlusDelta(int index, int dataStructureSize, byte delta)
         {
             if (!(index < dataStructureSize))
             {
@@ -33,7 +33,7 @@ namespace PartialSums.Tests
         [Theory]
         [InlineData(17, 18, 20, 10)]
         [InlineData(1, 18, 20, 10)]
-        public void Increase_SpecificIndexWithDelta_IndexAfterShouldBeOldPlusDelta(int index, int indexAfter, int dataStructureSize, int delta)
+        public void Increase_SpecificIndexWithDelta_IndexAfterShouldBeOldPlusDelta(int index, int indexAfter, int dataStructureSize, byte delta)
         {
             if (!(indexAfter > index))
             {
@@ -59,7 +59,7 @@ namespace PartialSums.Tests
         [Theory]
         [InlineData(17, 16, 20, 10)]
         [InlineData(15, 1, 37, 10)]
-        public void Increase_SpecificIndexWithDelta_IndexBeforeShouldNotBeChanged(int index, int indexBefore, int dataStructureSize, int delta)
+        public void Increase_SpecificIndexWithDelta_IndexBeforeShouldNotBeChanged(int index, int indexBefore, int dataStructureSize, byte delta)
         {
             if (!(indexBefore < index))
             {

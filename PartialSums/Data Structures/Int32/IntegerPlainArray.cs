@@ -70,5 +70,15 @@ namespace PartialSums
         {
             Increase(index, random.Next()); //TODO: is this problem?: Random.Next() returns nonnegative integer
         }
+
+        void ITestablePartialSumDataStructure.Increase(int index, byte delta)
+        {
+            Increase(index, Convert.ToInt32(delta));
+        }
+
+        byte ITestablePartialSumDataStructure.Sum(int index)
+        {
+            return Convert.ToByte(Sum(index));
+        }
     }
 }

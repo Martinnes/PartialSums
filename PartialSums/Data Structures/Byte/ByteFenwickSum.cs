@@ -5,14 +5,14 @@ using System.Text;
 
 namespace PartialSums.Data_Structures
 {
-    class LongFenwickSum : IBenchmarkablePartialSumDataStructure
+    public class ByteFenwickSum : IBenchmarkablePartialSumDataStructure, ITestablePartialSumDataStructure
     {
 
         public int Size { get => _items.Length; }
 
-        private long[] _items = Array.Empty<long>();
+        private byte[] _items = Array.Empty<byte>();
 
-        public LongFenwickSum(int size = -1)
+        public ByteFenwickSum(int size = -1)
         {
             if (size > 0)
                 Initialize(size);
@@ -20,35 +20,40 @@ namespace PartialSums.Data_Structures
 
         public void Initialize(int size)
         {
-            _items = new long[size];
+            _items = new byte[size];
         }
 
-        public void Increase(int i, long delta)
+        public void Increase(int i, byte delta)
         {
             for (; i < Size; i = i | (i + 1))
                 _items[i] += delta;
         }
 
-        public long Sum(int r)
+        public byte Sum(int r)
         {
             if (r < 0) return 0;
             if (r >= Size) r = Size - 1;
-            long result = 0;
+            byte result = 0;
             for (; r >= 0; r = (r & (r + 1)) - 1)
                 result += _items[r];
             return result;
         }
+
+        /*public int Sum(int l, int r)
+        {
+            return Sum(r) - Sum(l - 1);
+        }*/
+
+        //public override string ToString() => "Fenwick Tree";
 
         void IBenchmarkablePartialSumDataStructure.Sum(int index)
         {
             Sum(index);
         }
 
-        //https://stackoverflow.com/questions/6651554/random-number-in-long-range-is-this-the-way
         public void IncreaseIndexWithRandomValue(int index, Random random)
         {
-            Increase(index, random.NextLong());
+            Increase(index, random.NextByte()); 
         }
-
     }
 }

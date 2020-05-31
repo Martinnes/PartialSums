@@ -5,11 +5,11 @@ using System.Text;
 
 namespace PartialSums.Tests
 {
-    public class PlainArrayTests : AbstractPartialSumTests
+    public class ByteFenwickTests : AbstractPartialSumTests
     {
         protected override ITestablePartialSumDataStructure GetDataStructure(int size)
         {
-            return new IntegerPlainArray(size);        
+            return new ByteFenwickSum(size);
         }
     }
 }
