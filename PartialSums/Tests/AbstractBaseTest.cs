@@ -7,7 +7,7 @@ namespace PartialSums.Tests
 {
     public abstract class AbstractBaseTest
     {
-        private IPartialSumDataStructure ds;
+        private IBenchmarkablePartialSumDataStructure ds;
         private Random Random;
 
         public const string PlainArray = "Plain Array";

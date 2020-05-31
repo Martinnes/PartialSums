@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PartialSums.Data_Structures
 {
-    class LongFenwickSum : IPartialSumDataStructure
+    class LongFenwickSum : IBenchmarkablePartialSumDataStructure
     {
 
         public int Size { get => _items.Length; }
@@ -39,7 +39,7 @@ namespace PartialSums.Data_Structures
             return result;
         }
 
-        void IPartialSumDataStructure.Sum(int index)
+        void IBenchmarkablePartialSumDataStructure.Sum(int index)
         {
             Sum(index);
         }
@@ -49,5 +49,6 @@ namespace PartialSums.Data_Structures
         {
             Increase(index, random.NextLong());
         }
+
     }
 }

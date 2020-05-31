@@ -8,7 +8,7 @@ namespace PartialSums
 {
     //http://algo.pw/algo/87/
 
-    public class IntegerFenwickSum : IIntegerPartialSumDataStructure, IPartialSumDataStructure
+    public class IntegerFenwickSum : IIntegerPartialSumDataStructure, IBenchmarkablePartialSumDataStructure, ITestablePartialSumDataStructure
     {
         public int Size { get => _items.Length; }
         
@@ -70,7 +70,7 @@ namespace PartialSums
 
         public override string ToString() => "Fenwick Tree";
 
-        void IPartialSumDataStructure.Sum(int index)
+        void IBenchmarkablePartialSumDataStructure.Sum(int index)
         {
             Sum(index);
         }

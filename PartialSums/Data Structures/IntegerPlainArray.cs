@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PartialSums
 {
-    class IntegerPlainArray : IIntegerPartialSumDataStructure, IPartialSumDataStructure
+    public class IntegerPlainArray : IIntegerPartialSumDataStructure, IBenchmarkablePartialSumDataStructure, ITestablePartialSumDataStructure
     {
         public int Size { get => _items.Length; }
 
@@ -61,7 +61,7 @@ namespace PartialSums
 
         public override string ToString() => "Plain Array";
 
-        void IPartialSumDataStructure.Sum(int index)
+        void IBenchmarkablePartialSumDataStructure.Sum(int index)
         {
             Sum(index);
         }

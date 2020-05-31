@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PartialSums.Data_Structures
 {
-    interface IPartialSumDataStructure
+    public interface IBenchmarkablePartialSumDataStructure
     {
         int Size { get; }
 

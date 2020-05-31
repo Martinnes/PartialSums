@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PartialSums.Data_Structures
 {
-    class ByteFenwickSum : IPartialSumDataStructure
+    class ByteFenwickSum : IBenchmarkablePartialSumDataStructure
     {
 
         public int Size { get => _items.Length; }
@@ -46,7 +46,7 @@ namespace PartialSums.Data_Structures
 
         //public override string ToString() => "Fenwick Tree";
 
-        void IPartialSumDataStructure.Sum(int index)
+        void IBenchmarkablePartialSumDataStructure.Sum(int index)
         {
             Sum(index);
         }

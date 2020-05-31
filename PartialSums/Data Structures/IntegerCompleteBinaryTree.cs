@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PartialSums.Data_Structures
 {
-    class IntegerCompleteBinaryTree : IPartialSumDataStructure
+    public class IntegerCompleteBinaryTree : IBenchmarkablePartialSumDataStructure, ITestablePartialSumDataStructure
     {
         public int Size { get; }
 
@@ -57,7 +57,7 @@ namespace PartialSums.Data_Structures
             return _items[1] - RightChildrenSum;
         }
 
-        void IPartialSumDataStructure.Sum(int index)
+        void IBenchmarkablePartialSumDataStructure.Sum(int index)
         {
             Sum(index);
         }
@@ -74,5 +74,7 @@ namespace PartialSums.Data_Structures
             x |= x >> 16;
             return x + 1;
         }
+
+        
     }
 }
