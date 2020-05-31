@@ -11,31 +11,10 @@ namespace PartialSums
     public class IntegerFenwickSum : IBenchmarkablePartialSumDataStructure, ITestablePartialSumDataStructure
     {
         public int Size { get => _items.Length; }
-        
-        public bool IsInitialized { get => Size > 0; }
 
-        private int[] _items = Array.Empty<int>();
+        private int[] _items;
 
-        public IntegerFenwickSum(int size=-1)
-        {
-            if (size > 0)
-                Initialize(size);
-        }
-
-        public void ResetData()
-        {
-            _items = Array.Empty<int>();
-        }
-
-        public void Initialize(IList<int> items)
-        {
-            Initialize(items.Count);
-
-            for (var i = 0; i < Size; i++)
-                Increase(i, items[i]);
-        }
-
-        public void Initialize(int size)
+        public IntegerFenwickSum(int size)
         {
             _items = new int[size];
         }
@@ -44,13 +23,6 @@ namespace PartialSums
         {
             for (; i < Size; i = i | (i + 1))
                 _items[i] += delta;
-        }
-
-        public void InitializeRandomly(int size, Random r)
-        {
-            Initialize(size);
-            for (var i = 0; i < _items.Length; i++)
-                Increase(i, r.Next());
         }
 
         public int Sum(int r)
@@ -63,19 +35,12 @@ namespace PartialSums
             return result;
         }
 
-        /*public int Sum(int l, int r)
-        {
-            return Sum(r) - Sum(l - 1);
-        }*/
-
-        public override string ToString() => "Fenwick Tree";
-
         void IBenchmarkablePartialSumDataStructure.Sum(int index)
         {
             Sum(index);
         }
 
-        public void IncreaseIndexWithRandomValue(int index, Random random)
+        void IBenchmarkablePartialSumDataStructure.IncreaseIndexWithRandomValue(int index, Random random)
         {
             Increase(index, random.Next()); //TODO: is this problem?: Random.Next() returns nonnegative integer
         }

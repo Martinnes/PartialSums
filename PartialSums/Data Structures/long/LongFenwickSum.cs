@@ -7,18 +7,11 @@ namespace PartialSums.Data_Structures
 {
     public class LongFenwickSum : IBenchmarkablePartialSumDataStructure, ITestablePartialSumDataStructure
     {
-
         public int Size { get => _items.Length; }
 
-        private long[] _items = Array.Empty<long>();
+        private long[] _items;
 
-        public LongFenwickSum(int size = -1)
-        {
-            if (size > 0)
-                Initialize(size);
-        }
-
-        public void Initialize(int size)
+        public LongFenwickSum(int size)
         {
             _items = new long[size];
         }
@@ -45,7 +38,7 @@ namespace PartialSums.Data_Structures
         }
 
         //https://stackoverflow.com/questions/6651554/random-number-in-long-range-is-this-the-way
-        public void IncreaseIndexWithRandomValue(int index, Random random)
+        void IBenchmarkablePartialSumDataStructure.IncreaseIndexWithRandomValue(int index, Random random)
         {
             Increase(index, random.NextLong());
         }

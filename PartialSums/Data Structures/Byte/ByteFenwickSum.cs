@@ -7,18 +7,11 @@ namespace PartialSums.Data_Structures
 {
     public class ByteFenwickSum : IBenchmarkablePartialSumDataStructure, ITestablePartialSumDataStructure
     {
-
         public int Size { get => _items.Length; }
 
-        private byte[] _items = Array.Empty<byte>();
+        private byte[] _items;
 
-        public ByteFenwickSum(int size = -1)
-        {
-            if (size > 0)
-                Initialize(size);
-        }
-
-        public void Initialize(int size)
+        public ByteFenwickSum(int size)
         {
             _items = new byte[size];
         }
@@ -39,19 +32,12 @@ namespace PartialSums.Data_Structures
             return result;
         }
 
-        /*public int Sum(int l, int r)
-        {
-            return Sum(r) - Sum(l - 1);
-        }*/
-
-        //public override string ToString() => "Fenwick Tree";
-
         void IBenchmarkablePartialSumDataStructure.Sum(int index)
         {
             Sum(index);
         }
 
-        public void IncreaseIndexWithRandomValue(int index, Random random)
+        void IBenchmarkablePartialSumDataStructure.IncreaseIndexWithRandomValue(int index, Random random)
         {
             Increase(index, random.NextByte()); 
         }

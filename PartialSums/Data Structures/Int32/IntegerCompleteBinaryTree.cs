@@ -45,11 +45,6 @@ namespace PartialSums.Data_Structures
             }
         }
 
-        public void IncreaseIndexWithRandomValue(int index, Random random)
-        {
-            Increase(index, random.Next());
-        }
-
         public int Sum(int index)
         {
             int RightChildrenSum = 0;
@@ -61,9 +56,24 @@ namespace PartialSums.Data_Structures
             return _items[1] - RightChildrenSum;
         }
 
+        void IBenchmarkablePartialSumDataStructure.IncreaseIndexWithRandomValue(int index, Random random)
+        {
+            Increase(index, random.Next());
+        }
+
         void IBenchmarkablePartialSumDataStructure.Sum(int index)
         {
             Sum(index);
+        }
+
+        void ITestablePartialSumDataStructure.Increase(int index, byte delta)
+        {
+            Increase(index, Convert.ToInt32(delta));
+        }
+
+        byte ITestablePartialSumDataStructure.Sum(int index)
+        {
+            return Convert.ToByte(Sum(index));
         }
 
         //https://stackoverflow.com/questions/31997707/rounding-value-to-nearest-power-of-two
@@ -79,14 +89,5 @@ namespace PartialSums.Data_Structures
             return x + 1;
         }
 
-        void ITestablePartialSumDataStructure.Increase(int index, byte delta)
-        {
-            Increase(index, Convert.ToInt32(delta));
-        }
-
-        byte ITestablePartialSumDataStructure.Sum(int index)
-        {
-            return Convert.ToByte(Sum(index));
-        }
     }
 }
