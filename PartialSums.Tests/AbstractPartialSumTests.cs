@@ -4,6 +4,12 @@ using Xunit;
 
 namespace PartialSums.Tests
 {
+    /// <summary>
+    /// Tests in this class are created to support all Partial Sums data structures (including support of 8/32/64 bits)
+    /// This is done by only using bytes as values
+    /// In case value in 32/64 bit data structures exceeds 255 (or is negative) exception is thrown on conversion to 8 bit result (Implicit in Conversion class)
+    /// Therefore, programmer should never create tests, where values in 32/64 bit data structures are over 255
+    /// </summary>
     public abstract class AbstractPartialSumTests
     {
         protected abstract ITestablePartialSumDataStructure GetDataStructure(int size);
